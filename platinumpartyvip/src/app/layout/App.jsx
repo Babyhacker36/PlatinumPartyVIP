@@ -1,10 +1,19 @@
 import React from 'react';
+import {Container} from 'semantic-ui-react';
+import Navbar from  '../../features/nav/NavBar/NavBar';
+import EventDashboard from '../../features/event/EventDashboard/EventDashboard';
+
 
 
 function App() {
   return (
     <div>
-     <h1>Platinum Party VIP</h1>
+      <Navbar/>
+
+      <Container className="main">
+      <EventDashboard/>
+      </Container>
+
     </div>
   );
 }
