@@ -7,8 +7,8 @@ import { Menu, Container, Button } from 'semantic-ui-react';
           <Menu inverted fixed="top">
             <Container>
               <Menu.Item header>
-                <img src="assets/logo2.jpg" alt="logo" />
-                
+                {/* <img src="assets/logo2.jpg" alt="logo" /> */}
+                Platinum Party VIP
               </Menu.Item>
               <Menu.Item name="Events" />
               <Menu.Item>

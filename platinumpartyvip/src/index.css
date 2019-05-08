@@ -66,9 +66,9 @@ body {
 /* navbar styles */
 
 .ui.menu .item img.logo {
-  /* margin-right: 1.5em; */
-  width: 100% important!;
-  height: 100px;
+  margin-right: 1.5em;
+  /* width: 400px ;
+  height: 100px; */
 }
 /* 
 div.header.item img {
