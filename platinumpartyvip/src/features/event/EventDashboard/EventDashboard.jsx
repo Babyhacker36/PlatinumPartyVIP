@@ -9,7 +9,7 @@ const eventsDashboard = [
   {
     id: '1',
     title: 'Blow Out Party at the Summit in Brooklyn....',
-    date: '2018-03-27T11:00:00+00:00',
+    date: '2018-03-27',
     category: 'culture',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ligula eu leo tincidunt, quis scelerisque magna dapibus. Sed eget ipsum vel arcu vehicula ullamcorper.',
@@ -54,7 +54,7 @@ const eventsDashboard = [
   {
     id: '2',
     title: 'Ladies Night at the 40/40 Club',
-    date: '2018-03-28T14:00:00+00:00',
+    date: '2018-03-28',
     category: 'drinks',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ligula eu leo tincidunt, quis scelerisque magna dapibus. Sed eget ipsum vel arcu vehicula ullamcorper.',
@@ -81,12 +81,13 @@ const eventsDashboard = [
 class EventDashboard extends Component {
   state = {
     events: eventsDashboard,
-    isOpen: false
+    isOpen: false,
+    selectedEvent: null
   };
-// various methods to handle events
 
   handleFormOpen = () => {
     this.setState({
+      selectedEvent: null,
       isOpen: true
     });
   };
@@ -97,29 +98,51 @@ class EventDashboard extends Component {
     });
   };
 
-  // method to update the event list and 
-  // pass the information from the form to actual event list
+  handleUpdateEvent = (updatedEvent) => {
+    this.setState({
+      events: this.state.events.map(event => {
+        if (event.id === updatedEvent.id) {
+          return Object.assign({}, updatedEvent)
+          // clones the object then assigns the event
+        } else {
+          return event
+        }
+      }),
+      isOpen: false,
+      selectedEvent: null
+    })
+  }
 
-  // cuid is a package found in json  is imported see above line 5
-  // generates a random id
+  handleOpenEvent = (eventToOpen) => () => {
+    this.setState({
+      selectedEvent: eventToOpen,
+      isOpen: true
+    })
+  } 
 
   handleCreateEvent = (newEvent) => {
     newEvent.id = cuid();
     newEvent.hostPhotoURL = '/assets/user.png';
     const updatedEvents = [...this.state.events, newEvent];
-    this.setState ({
+    this.setState({
       events: updatedEvents,
-      isOpen:false
-      // function with the method is passed down to the event form so 
-      //  when the form is submitted can call the mrthed and update the state inside the dashboard
+      isOpen: false
     })
-  };
+  }
+
+  handleDeleteEvent = (eventId) => () => {
+    const updatedEvents = this.state.events.filter(e => e.id !== eventId);
+    this.setState({
+      events: updatedEvents
+    })
+  }
 
   render() {
+    const {selectedEvent} = this.state;
     return (
       <Grid>
         <Grid.Column width={10}>
-          <EventList events={this.state.events} />
+          <EventList deleteEvent={this.handleDeleteEvent} events={this.state.events} onEventOpen={this.handleOpenEvent} />
         </Grid.Column>
         <Grid.Column width={6}>
           <Button
@@ -127,9 +150,7 @@ class EventDashboard extends Component {
             positive
             content="Create Event"
           />
-          {this.state.isOpen && (
-          <EventForm createEvent ={this.handleCreateEvent} handleCancel={this.handleCancel} />
-          )}
+          {this.state.isOpen && <EventForm updateEvent={this.handleUpdateEvent} selectedEvent={selectedEvent} handleCancel={this.handleCancel} createEvent={this.handleCreateEvent} />}
         </Grid.Column>
       </Grid>
     );
