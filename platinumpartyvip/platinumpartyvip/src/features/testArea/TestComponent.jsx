@@ -18,7 +18,7 @@ class TestComponent extends Component {
     return (
       <div>
         <h1>Test Area</h1>
-        <h3>The answer is: {data}</h3>
+        <h3>The answer hello is: {data}</h3>
         <Button onClick={incrementCounter} color='green' content='Increment' />
         <Button onClick={decrementCounter} color='red' content='Decrement' />
       </div>
