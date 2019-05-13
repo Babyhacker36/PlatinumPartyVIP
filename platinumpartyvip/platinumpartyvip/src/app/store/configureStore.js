@@ -16,8 +16,6 @@ export const configureStore = (preloadedState) => {
     composedEnhancer
   )
 
-// this code hasnt been used yet
-
   if (process.env.NODE_ENV !== 'production') {
     if (module.hot) {
       module.hot.accept('../reducers/rootReducer', () => {

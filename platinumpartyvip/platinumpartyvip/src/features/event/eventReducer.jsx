@@ -1,81 +1,56 @@
 import { createReducer } from '../../app/common/util/reducerUtil';
 import { CREATE_EVENT, DELETE_EVENT, UPDATE_EVENT } from './eventConstants';
 
-
-
-
 const initialState = [
   {
     id: '1',
-    title: 'Blow Out Party at the Summit in Brooklyn....',
+    title: 'Trip to Tower of London',
     date: '2018-03-27',
     category: 'culture',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ligula eu leo tincidunt, quis scelerisque magna dapibus. Sed eget ipsum vel arcu vehicula ullamcorper.',
-    city: 'Manhattan, New York',
-    venue: "Summit Night Club",
-    hostedBy: 'Tracy',
-    hostPhotoURL: 'https://randomuser.me/api/portraits/women/24.jpg',
+    city: 'London, UK',
+    venue: "Tower of London, St Katharine's & Wapping, London",
+    hostedBy: 'Bob',
+    hostPhotoURL: 'https://randomuser.me/api/portraits/men/20.jpg',
     attendees: [
-      { 
+      {
         id: 'a',
-        name: 'Tracy',
-        photoURL: 'https://randomuser.me/api/portraits/women/4.jpg'
+        name: 'Bob',
+        photoURL: 'https://randomuser.me/api/portraits/men/20.jpg'
       },
       {
         id: 'b',
-        name: 'Jessica',
-        photoURL: 'https://randomuser.me/api/portraits/women/22.jpg'
-      },
-      {
-        id: 'c',
-        name: 'James',
-        photoURL: 'https://randomuser.me/api/portraits/men/11.jpg'
-      },
-      {
-        id: 'd',
-        name: 'Katrina',
-        photoURL: 'https://randomuser.me/api/portraits/women/12.jpg'
-      },
-      {
-        id: 'e',
-        name: 'Will',
-        photoURL: 'https://randomuser.me/api/portraits/men/18.jpg'
-      },
-      {
-        id: 'f',
-        name: 'Ryan',
-        photoURL: 'https://randomuser.me/api/portraits/men/30.jpg'
+        name: 'Tom',
+        photoURL: 'https://randomuser.me/api/portraits/men/22.jpg'
       }
-
     ]
   },
   {
     id: '2',
-    title: 'Ladies Night at the 40/40 Club',
+    title: 'Trip to Punch and Judy Pub',
     date: '2018-03-28',
     category: 'drinks',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ligula eu leo tincidunt, quis scelerisque magna dapibus. Sed eget ipsum vel arcu vehicula ullamcorper.',
-    city: 'LAs Vegas',
-    venue: '40/40 Club New York City',
-    hostedBy: 'Justin',
-    hostPhotoURL: 'https://randomuser.me/api/portraits/men/38.jpg',
+    city: 'London, UK',
+    venue: 'Punch & Judy, Henrietta Street, London, UK',
+    hostedBy: 'Tom',
+    hostPhotoURL: 'https://randomuser.me/api/portraits/men/22.jpg',
     attendees: [
       {
         id: 'b',
-        name: 'Justin',
+        name: 'Tom',
         photoURL: 'https://randomuser.me/api/portraits/men/22.jpg'
       },
       {
         id: 'a',
         name: 'Bob',
-        photoURL: 'https://randomuser.me/api/portraits/men/28.jpg'
+        photoURL: 'https://randomuser.me/api/portraits/men/20.jpg'
       }
     ]
   }
 ];
-
 
 export const createEvent = (state, payload) => {
   return [...state, Object.assign({}, payload.event)]
