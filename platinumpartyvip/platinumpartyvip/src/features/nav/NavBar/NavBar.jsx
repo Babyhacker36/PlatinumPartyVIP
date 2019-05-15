@@ -4,6 +4,7 @@ import { Menu, Container, Button } from 'semantic-ui-react';
 import { NavLink, Link, withRouter } from 'react-router-dom';
 import SignedOutMenu from '../Menus/SignedOutMenu';
 import SignedInMenu from '../Menus/SignedInMenu';
+<<<<<<< HEAD:platinumpartyvip/src/features/nav/NavBar/NavBar.jsx
 import { openModal } from '../../modals/modalActions'
 import { logout } from '../../auth/authActions'
 
@@ -15,6 +16,8 @@ const actions = {
 const mapState = (state) => ({
   auth: state.auth
 })
+=======
+>>>>>>> 6d504f2466f0bc937d93a4fc120ad0ef9416fa1f:platinumpartyvip/platinumpartyvip/src/features/nav/NavBar/NavBar.jsx
 
 class NavBar extends Component {
 
@@ -39,7 +42,11 @@ class NavBar extends Component {
         <Container>
           <Menu.Item as={Link} to="/" header>
             <img src="/assets/logo.png" alt="logo" />
+<<<<<<< HEAD:platinumpartyvip/src/features/nav/NavBar/NavBar.jsx
             Platinum Party VIP
+=======
+            Re-vents
+>>>>>>> 6d504f2466f0bc937d93a4fc120ad0ef9416fa1f:platinumpartyvip/platinumpartyvip/src/features/nav/NavBar/NavBar.jsx
           </Menu.Item>
           <Menu.Item as={NavLink} to="/events" name="Events" />
           <Menu.Item as={NavLink} to="/test" name="Test" />
